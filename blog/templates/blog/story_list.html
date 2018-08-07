@@ -1,21 +1,11 @@
-<html>
-<head>
-    <title>My Stories</title>
-</head>
-<body>
-  <div>
-      <h1><a href="/">Django Girls Blog</a></h1>
-  </div>
+{% extends 'blog/base.html' %}
 
+{% block content %}
   {% for story in stories %}
-  <div>
+  <div class="post">
       <p>published: {{ story.published}}</p>
-      <h2><a href="">{{ story.title}}</a></h2>
+      <h2><a href="{% url 'story_detail' pk=story.pk %}">{{ story.title}}</a></h2>
       <p>{{ story.text|linebreaksbr}}</p>
   </div>
   {% endfor %}
-
-
-
-</body>
-</html>
+{% endblock %}
